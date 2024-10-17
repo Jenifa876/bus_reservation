@@ -1,0 +1,109 @@
+#include<iostream>
+using namespace std;
+class Bus
+{
+    public:
+      int bus_no,arrival_time,departure_time,no_of_seats;
+      string from,to;
+      
+    public:
+     void install()
+     {
+       
+         cout<<"\n\nEnter bus details:\n\n";
+         cout<<"Bus number: ";
+         cin>>bus_no;
+         cout<<"\nFrom: ";
+         cin>>from;
+         cout<<"\nTo: ";
+         cin>>to;
+         cout<<"\nDeparture time: ";
+         cin>>departure_time;
+         cout<<"\nArrival time: ";
+         cin>>arrival_time;
+         cout<<"\nTotal number of seats: ";
+         cin>>no_of_seats;
+     }
+     void availableBus()
+     {
+         
+         cout<<"\n\nAvailable buses:\n";
+         cout<<"Bus number:"<<bus_no<<endl;
+         cout<<"From:"<<from<<endl;
+         cout<<"To:"<<to<<endl;
+         cout<<"Departure time:"<<departure_time<<endl;
+         cout<<"Arrival time:"<<arrival_time<<endl;
+         cout<<"Available seats:"<<no_of_seats<<endl;
+         
+     }
+    
+         
+        
+     
+};
+
+int main()
+{
+    Bus b[6],b2;
+    int choice,i=0,bus_no2,seats;
+    string name;
+     int ct=0;
+    while(true)
+    {
+      cout<<"\n\n\t\t\t\t******************"<<endl;
+      cout<<"\t\t\t\t\t\tBus Ticketing System\n";
+      cout<<"\t\t\t\t******************"<<endl;
+
+    cout<<"\t\t\t\t\t 1 => Install\n\t\t\t\t\t 2 => List Available Bus\n\t\t\t\t\t 3 => Book Tickets\n\t\t\t\t\t 5 =>Exit";
+    cout<<"\n";
+    cout<<"\nEnter choice: ";
+    cin>>choice;
+    if(choice==1)
+    {
+      b[i].install();
+       i++;
+       ct++;
+    }
+    else if(choice==2)
+    {
+      for(int i=0;i<ct;i++)
+       {
+          b[i].availableBus();
+        }
+    }
+    else if(choice==3)
+    {
+        cout<<"\n\nEnter bus no:";
+        cin>>bus_no2;
+        cout<<"\nEnter passenger's name:";
+        cin>>name;
+        for(int i=0;i<=ct;i++)
+        {
+        if(bus_no2==b[i].bus_no)
+         {
+             cout<<"\nAvailable seats:"<<b[i].no_of_seats<<endl;
+             cout<<"\nEnter number of seats:";
+             cin>>seats;
+             if(seats>b[i].no_of_seats)
+             {
+               cout<<"\nSorry!Limit exceed..\nRe-enter:";
+               cin>>seats;
+             }  
+             b[i].no_of_seats=b[i].no_of_seats-seats;
+         cout<<"\nTicket booked successfully.\n";
+         cout<<"\nName:"<<name<<endl;
+         cout<<"Bus Number:"<<bus_no2<<endl;
+         cout<<"From:"<<b[i].from<<endl;
+         cout<<"To:"<<b[i].to<<endl;
+         cout<<"Departure time:"<<b[i].departure_time<<endl;
+         cout<<"Arrival time:"<<b[i].arrival_time<<endl;
+ 
+         }
+        }
+    }
+    else 
+        return 0;
+   }
+    
+    return 0;
+}
